@@ -1,0 +1,193 @@
+<!doctype html>
+<link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet" />
+
+<html>
+    <head>
+        <body>
+            <!-- Calculator -->
+            <!-- Outer Style -->
+            <section
+                style="
+                    background-color: #e4e1d8;
+                    background-image: url(silver.jpg);
+                    width: 325px;
+                    height: 550px;
+                    overflow: auto;
+                    border: solid dimgray 2px;
+                    border-bottom: solid black 5px;
+                "
+            >
+                <!-- Inner Style -->
+                <section
+                    style="
+                        background-color: #8e8c80;
+                        background-image: url(silver_2.jpg);
+                        width: 300px;
+                        border-top-left-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        border-left: solid black 5px;
+                        border-top: solid black 5px;
+                        border-bottom: solid black 5px;
+                        margin-left: 20px;
+                        margin-top: 60px;
+                    "
+                >
+                    <h4
+                        style="
+                            padding-left: 210px;
+                            padding-top: 20px;
+                            margin-bottom: 5px;
+                        "
+                    >
+                        QL-10
+                    </h4>
+                    <!-- Display -->
+                    <section>
+                        <div
+                            style="
+                                background-color: black;
+                                width: 230px;
+                                margin-left: 35px;
+                            "
+                        >
+                            <input
+                                readonly
+                                style="
+                                    background-color: darkolivegreen;
+                                    margin-top: 14px;
+                                    margin-bottom: 14px;
+                                    margin-left: 10px;
+                                    border-width: 4px;
+                                    width: 200px;
+                                    font-size: 22px;
+                                    font-weight: bold;
+                                    text-align: right;
+                                    font-family:
+                                        &quot;Calculator&quot;, sans-serif;
+                                "
+                            />
+                        </div>
+                    </section>
+                    <!-- Buttons -->
+                    <section
+                        style="
+                            display: grid;
+                            grid-template-columns: repeat(5, minmax(0, 1fr));
+                            justify-items: center;
+                            align-items: center;
+                            padding-bottom: 18px;
+                        "
+                    >
+                        <!-- Top Row -->
+                        <div>
+                            <h6>(</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>7</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>8</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>9</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>÷</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <!-- Mid Top Row -->
+                        <div>
+                            <h6>)</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>4</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>5</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>6</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>x</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <!-- Mid Low Row -->
+                        <div>
+                            <h6>C</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>1</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>2</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>3</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>━</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <!-- Bottom Row -->
+                        <div></div>
+                        <div></div>
+                        <div>
+                            <h6>0</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>=</h6>
+                            <button class="number-button"></button>
+                        </div>
+                        <div>
+                            <h6>+</h6>
+                            <button class="number-button"></button>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </body>
+
+        <style>
+            body {
+                background-image: url(office.jpg);
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .number-button {
+                background-color: #1f1d28;
+                padding: 6px 14px;
+                border-radius: 0.5rem;
+                outline-style: solid;
+                outline-width: 2px;
+                outline-color: black;
+            }
+            h4 {
+                font-family: "Arial", sans-serif;
+                font-weight: lighter;
+            }
+            h6 {
+                font-size: 14px;
+                margin-bottom: 2px;
+                padding-left: 11px;
+                font-family: "Arial", sans-serif;
+            }
+        </style>
+    </head>
+</html>
