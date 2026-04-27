@@ -17,6 +17,110 @@
                     const inputField = document.getElementById("display");
                     inputField.value = "";
                 }
+
+                let num_stack = new Array();
+                let op_stack = new Array();
+
+                const precedence = {
+                    X: 2,
+                    "÷": 2,
+                    "+": 1,
+                    "-": 1,
+                };
+
+                function stack_input(input) {
+                    const tokens = input.match(/(\d+|\+|\-|X|÷|\(|\))/g);
+
+                    for (let token of tokens) {
+                        if (isNum(token)) {
+                            num_stack.push(Number(token));
+                        } else if (isOp(token)) {
+                            while (
+                                op_stack.length > 0 &&
+                                isOp(op_stack[op_stack.length - 1]) &&
+                                precedence[op_stack[op_stack.length - 1]] >=
+                                    precedence[token]
+                            ) {
+                                num_stack.push(op_stack.pop());
+                            }
+                            op_stack.push(token);
+                        } else if (token === "(") {
+                            op_stack.push(token);
+                        } else if (token === ")") {
+                            while (
+                                op_stack.length > 0 &&
+                                op_stack[op_stack.length - 1] !== "("
+                            ) {
+                                num_stack.push(op_stack.pop());
+                            }
+                            if (op_stack.length === 0)
+                                throw new Error("Error de Parentesis");
+                            op_stack.pop();
+                        }
+                    }
+
+                    while (op_stack.length > 0) {
+                        const op = op_stack.pop();
+                        if (op === "(" || op === ")")
+                            throw new Error("Error de Parentesis");
+                        num_stack.push(op);
+                    }
+                }
+
+                function isNum(token) {
+                    return !isNaN(token) && token !== "";
+                }
+
+                function isOp(token) {
+                    return ["+", "-", "X", "÷"].includes(token);
+                }
+
+                function eval_stack() {
+                    const eval_s = new Array();
+
+                    for (let token of num_stack) {
+                        if (typeof token === "number") {
+                            eval_s.push(token);
+                        } else if (isOp(token)) {
+                            if (eval_s.length < 2)
+                                throw new Error(
+                                    "debe ser mayor a 2 operandos la operacion",
+                                );
+
+                            const b = eval_s.pop(); //segundo num
+                            const a = eval_s.pop(); // primer num
+
+                            let result;
+                            if (token === "+") result = a + b;
+                            else if (token === "-") result = a - b;
+                            else if (token === "X") result = a * b;
+                            else if (token === "÷") {
+                                if (b === 0)
+                                    throw new Error("division entre cero");
+                                result = a / b;
+                            }
+
+                            eval_s.push(result);
+                        } else {
+                            throw new Error("invalido: " + token);
+                        }
+                    }
+
+                    if (eval_s.length !== 1)
+                        throw new Error("expresion invalida");
+                    return eval_s[0];
+                }
+
+                function calculate() {
+                    num_stack = [];
+                    op_stack = [];
+                    const inputField = document.getElementById("display");
+                    stack_input(inputField.value);
+                    console.log(num_stack);
+                    console.log(num_stack);
+                    result = eval_stack();
+                    inputField.value = result;
+                }
             </script>
 
             <!-- Calculator -->
@@ -220,7 +324,10 @@
                         </div>
                         <div>
                             <h6>=</h6>
-                            <button class="number-button"></button>
+                            <button
+                                class="number-button"
+                                onclick="calculate()"
+                            ></button>
                         </div>
                         <div>
                             <h6>+</h6>
