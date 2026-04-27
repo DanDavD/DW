@@ -114,231 +114,267 @@
                 function calculate() {
                     num_stack = [];
                     op_stack = [];
+
                     const inputField = document.getElementById("display");
                     stack_input(inputField.value);
-                    console.log(num_stack);
-                    console.log(num_stack);
                     result = eval_stack();
                     inputField.value = result;
+
+                    show_flame();
+                }
+
+                function show_flame() {
+                    const flame = document.getElementById("flame");
+                    flame.src = "flame-gif.gif?t=" + Date.now();
+                    flame.style.visibility = "visible";
+
+                    setTimeout(() => {
+                        flame.style.visibility = "hidden";
+                    }, 1800);
                 }
             </script>
 
             <!-- Calculator -->
             <!-- Outer Style -->
-            <section
+            <button
+                onclick="show_flame()"
                 style="
-                    background-color: #e4e1d8;
-                    background-image: url(silver.jpg);
-                    width: 325px;
-                    height: 550px;
-                    overflow: auto;
-                    border: solid dimgray 2px;
-                    border-bottom: solid black 5px;
+                    background-color: #1f1d28;
+                    padding: 30px 8px;
+                    margin-top: -200px;
                 "
-            >
-                <!-- Inner Style -->
+            ></button>
+            <div>
+                <img
+                    id="flame"
+                    src="flame-gif.gif"
+                    height="150px"
+                    style="
+                        visibility: hidden;
+                        margin-bottom: -10px;
+                        margin-top: -30px;
+                    "
+                />
                 <section
                     style="
-                        background-color: #8e8c80;
-                        background-image: url(silver_2.jpg);
-                        width: 300px;
-                        border-top-left-radius: 5px;
-                        border-bottom-left-radius: 5px;
-                        border-left: solid black 5px;
-                        border-top: solid black 5px;
+                        background-color: #e4e1d8;
+                        background-image: url(silver.jpg);
+                        width: 325px;
+                        height: 575px;
+                        overflow: auto;
+                        border: solid dimgray 2px;
                         border-bottom: solid black 5px;
-                        margin-left: 20px;
-                        margin-top: 60px;
                     "
                 >
-                    <h4
-                        style="
-                            padding-left: 210px;
-                            padding-top: 20px;
-                            margin-bottom: 5px;
-                        "
-                    >
-                        QL-10
-                    </h4>
-                    <!-- Display -->
-                    <section>
-                        <div
-                            style="
-                                background-color: black;
-                                width: 230px;
-                                margin-left: 35px;
-                            "
-                        >
-                            <input
-                                readonly
-                                id="display"
-                                style="
-                                    background-color: darkolivegreen;
-                                    margin-top: 14px;
-                                    margin-bottom: 14px;
-                                    margin-left: 10px;
-                                    border-width: 4px;
-                                    width: 200px;
-                                    font-size: 22px;
-                                    font-weight: bold;
-                                    text-align: right;
-                                    font-family:
-                                        &quot;Calculator&quot;, sans-serif;
-                                "
-                            />
-                        </div>
-                    </section>
-                    <!-- Buttons -->
+                    <!-- Inner Style -->
                     <section
                         style="
-                            display: grid;
-                            grid-template-columns: repeat(5, minmax(0, 1fr));
-                            justify-items: center;
-                            align-items: center;
-                            padding-bottom: 18px;
+                            background-color: #8e8c80;
+                            background-image: url(silver_2.jpg);
+                            width: 300px;
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                            border-left: solid black 5px;
+                            border-top: solid black 5px;
+                            border-bottom: solid black 5px;
+                            margin-left: 20px;
+                            margin-top: 60px;
                         "
                     >
-                        <!-- Top Row -->
-                        <div>
-                            <h6>(</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('(')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>7</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('7')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>8</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('8')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>9</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('9')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>÷</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('÷')"
-                            ></button>
-                        </div>
-                        <!-- Mid Top Row -->
-                        <div>
-                            <h6>)</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token(')')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>4</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('4')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>5</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('5')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>6</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('6')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>x</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('X')"
-                            ></button>
-                        </div>
-                        <!-- Mid Low Row -->
-                        <div>
-                            <h6>C</h6>
-                            <button
-                                class="number-button"
-                                onclick="clear_input()"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>1</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('1')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>2</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('2')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>3</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('3')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>━</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('-')"
-                            ></button>
-                        </div>
-                        <!-- Bottom Row -->
-                        <div>
-                            <h6>⬅</h6>
-                            <button
-                                class="number-button"
-                                onclick="del_token()"
-                            ></button>
-                        </div>
-                        <div></div>
-                        <div>
-                            <h6>0</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('0')"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>=</h6>
-                            <button
-                                class="number-button"
-                                onclick="calculate()"
-                            ></button>
-                        </div>
-                        <div>
-                            <h6>+</h6>
-                            <button
-                                class="number-button"
-                                onclick="input_token('+')"
-                            ></button>
-                        </div>
+                        <h4
+                            style="
+                                padding-left: 210px;
+                                padding-top: 20px;
+                                margin-bottom: 5px;
+                            "
+                        >
+                            QL-10
+                        </h4>
+                        <!-- Display -->
+                        <section>
+                            <div
+                                style="
+                                    background-color: black;
+                                    width: 230px;
+                                    margin-left: 35px;
+                                "
+                            >
+                                <input
+                                    readonly
+                                    id="display"
+                                    style="
+                                        background-color: darkolivegreen;
+                                        margin-top: 14px;
+                                        margin-bottom: 14px;
+                                        margin-left: 10px;
+                                        border-width: 4px;
+                                        width: 200px;
+                                        font-size: 22px;
+                                        font-weight: bold;
+                                        text-align: right;
+                                        font-family:
+                                            &quot;Calculator&quot;, sans-serif;
+                                    "
+                                />
+                            </div>
+                        </section>
+                        <!-- Buttons -->
+                        <section
+                            style="
+                                display: grid;
+                                grid-template-columns: repeat(
+                                    5,
+                                    minmax(0, 1fr)
+                                );
+                                justify-items: center;
+                                align-items: center;
+                                padding-bottom: 18px;
+                            "
+                        >
+                            <!-- Top Row -->
+                            <div>
+                                <h6>(</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('(')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>7</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('7')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>8</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('8')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>9</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('9')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>÷</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('÷')"
+                                ></button>
+                            </div>
+                            <!-- Mid Top Row -->
+                            <div>
+                                <h6>)</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token(')')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>4</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('4')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>5</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('5')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>6</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('6')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>x</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('X')"
+                                ></button>
+                            </div>
+                            <!-- Mid Low Row -->
+                            <div>
+                                <h6>C</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="clear_input()"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>1</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('1')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>2</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('2')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>3</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('3')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>━</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('-')"
+                                ></button>
+                            </div>
+                            <!-- Bottom Row -->
+                            <div>
+                                <h6>⬅</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="del_token()"
+                                ></button>
+                            </div>
+                            <div></div>
+                            <div>
+                                <h6>0</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('0')"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>=</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="calculate()"
+                                ></button>
+                            </div>
+                            <div>
+                                <h6>+</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('+')"
+                                ></button>
+                            </div>
+                        </section>
+                        <!-- Logo -->
+                        <h3>CASIO</h3>
                     </section>
                 </section>
-            </section>
+            </div>
         </body>
 
         <style>
@@ -357,6 +393,15 @@
                 outline-style: solid;
                 outline-width: 2px;
                 outline-color: black;
+            }
+            h3 {
+                font-family: "Arial", sans-serif;
+                font-weight: bolder;
+                color: #715721;
+                text-align: right;
+                margin-right: 25px;
+                margin-top: 0px;
+                margin-bottom: 10px;
             }
             h4 {
                 font-family: "Arial", sans-serif;
