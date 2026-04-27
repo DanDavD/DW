@@ -9,6 +9,10 @@
                     const inputField = document.getElementById("display");
                     inputField.value += token;
                 }
+                function del_token(token) {
+                    const inputField = document.getElementById("display");
+                    inputField.value = inputField.value.slice(0, -1);
+                }
                 function clear_input() {
                     const inputField = document.getElementById("display");
                     inputField.value = "";
@@ -199,7 +203,13 @@
                             ></button>
                         </div>
                         <!-- Bottom Row -->
-                        <div></div>
+                        <div>
+                            <h6>⬅</h6>
+                            <button
+                                class="number-button"
+                                onclick="del_token()"
+                            ></button>
+                        </div>
                         <div></div>
                         <div>
                             <h6>0</h6>
