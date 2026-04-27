@@ -82,10 +82,7 @@
                         if (typeof token === "number") {
                             eval_s.push(token);
                         } else if (isOp(token)) {
-                            if (eval_s.length < 2)
-                                throw new Error(
-                                    "debe ser mayor a 2 operandos la operacion",
-                                );
+                            if (eval_s.length < 2) return "Syntax Error";
 
                             const b = eval_s.pop(); //segundo num
                             const a = eval_s.pop(); // primer num
@@ -95,19 +92,17 @@
                             else if (token === "-") result = a - b;
                             else if (token === "X") result = a * b;
                             else if (token === "÷") {
-                                if (b === 0)
-                                    throw new Error("division entre cero");
+                                if (b === 0) return "Math Error";
                                 result = a / b;
                             }
 
                             eval_s.push(result);
                         } else {
-                            throw new Error("invalido: " + token);
+                            return "invalido: " + token;
                         }
                     }
 
-                    if (eval_s.length !== 1)
-                        throw new Error("expresion invalida");
+                    if (eval_s.length !== 1) return "expresion invalida";
                     return eval_s[0];
                 }
 
@@ -375,11 +370,21 @@
                     </section>
                 </section>
             </div>
+            <img
+                src="hand.png"
+                width="1050"
+                style="
+                    position: absolute;
+                    z-index: -1;
+                    margin-left: 500px;
+                    margin-top: 200px;
+                "
+            />
         </body>
 
         <style>
             body {
-                background-image: url(office.jpg);
+                background-image: url(background.jpeg);
                 margin: 0;
                 height: 100vh;
                 display: flex;
