@@ -29,7 +29,9 @@
                 };
 
                 function stack_input(input) {
-                    const tokens = input.match(/(\d+|\+|\-|X|÷|\(|\))/g);
+                    const tokens = input.match(
+                        /(\d+(?:\.\d+)?|\+|\-|X|÷|\(|\))/g,
+                    );
 
                     for (let token of tokens) {
                         if (isNum(token)) {
@@ -342,7 +344,13 @@
                                     onclick="del_token()"
                                 ></button>
                             </div>
-                            <div></div>
+                            <div>
+                                <h6>.</h6>
+                                <button
+                                    class="number-button"
+                                    onclick="input_token('.')"
+                                ></button>
+                            </div>
                             <div>
                                 <h6>0</h6>
                                 <button
